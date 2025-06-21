@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  background: radial-gradient(circle at top left, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+  overflow: hidden;
+  color: #333;
+}
+
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  text-align: center;
+}
+
+.container {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.page {
+  width: 100%;
+  height: 100vh;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  opacity: 0;
+  transition: all 1s ease;
+  background: rgba(255, 255, 255, 0.15); /* 🔥 glass effect */
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page img {
+  max-width: 360px;
+  max-height: 360px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+  margin-bottom: 30px;
+  animation: zoomIn 1s ease;
+  object-fit: cover;
+}
+
+.page.active {
+  left: 0;
+  opacity: 1;
+  z-index: 1;
+  animation: slideIn 1s ease;
+}
+
+.page h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3em;
+  color: #ff4081;
+}
+
+.page p {
+  font-size: 1.5em;
+  margin-top: 20px;
+}
+
+.typewriter {
+  border-right: 2px solid;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 4s steps(40, end) forwards;
+}
+
+.glow {
+  color: #ff1493;
+  font-size: 1.7em;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+/* --- ANIMATIONS --- */
+
+@keyframes typing {
+  to { width: 100% }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff1493; }
+  to { text-shadow: 0 0 20px #ff6ec7; }
+}
+
+@keyframes slideIn {
+  from { transform: rotateY(80deg); opacity: 0 }
+  to { transform: rotateY(0deg); opacity: 1 }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.hearts-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hearts-container::before {
+  content: "❤️ 💖 💘 💝 💞";
+  font-size: 3rem;
+  position: absolute;
+  animation: floatHearts 20s linear infinite;
+  opacity: 0.12;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
+}
+
+@keyframes floatHearts {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+  }
+}
